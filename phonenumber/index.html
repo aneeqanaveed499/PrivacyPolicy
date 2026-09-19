@@ -1,133 +1,496 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #fff;
-            color: #000;
-            line-height: 1.6;
-            padding: 2rem;
-            max-width: 800px;
-            margin: auto;
-        }
-        h1, h2 {
-            color: #111;
-        }
-        h1 {
-            font-size: 2rem;
-        }
-        p, ul {
-            margin-bottom: 1.2rem;
-        }
-        ul {
-            padding-left: 1.2rem;
-        }
-        .date {
-            color: #777;
-            margin-bottom: 2rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Locator Privacy Policy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+ 
+  :root {
+    --paper: #faf8fc;
+    --paper-raised: #ffffff;
+    --ink: #1c1230;
+    --ink-soft: #5b5270;
+    --ink-faint: #8a80a0;
+    --line: #e4dcf2;
+    --accent: #7c3aed;
+    --accent-2: #c026d3;
+    --accent-deep: #4c1d95;
+    --accent-glow: #a78bfa;
+    --accent-tint: #f4edfd;
+    color-scheme: light;
+  }
+ 
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #130b21;
+      --paper-raised: #1c1130;
+      --ink: #f1ecfa;
+      --ink-soft: #bdb2d6;
+      --ink-faint: #85789f;
+      --line: #33204d;
+      --accent: #b294fb;
+      --accent-2: #ee8ffa;
+      --accent-deep: #d8c8fb;
+      --accent-glow: #7c3aed;
+      --accent-tint: #241537;
+      color-scheme: dark;
+    }
+  }
+ 
+  :root[data-theme="dark"] {
+    --paper: #130b21;
+    --paper-raised: #1c1130;
+    --ink: #f1ecfa;
+    --ink-soft: #bdb2d6;
+    --ink-faint: #85789f;
+    --line: #33204d;
+    --accent: #b294fb;
+    --accent-2: #ee8ffa;
+    --accent-deep: #d8c8fb;
+    --accent-glow: #7c3aed;
+    --accent-tint: #241537;
+    color-scheme: dark;
+  }
+ 
+  * { box-sizing: border-box; }
+ 
+  html, body { margin: 0; padding: 0; }
+ 
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+ 
+  a { color: var(--accent-deep); }
+  a:hover { color: var(--accent); }
+ 
+  .mono {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+ 
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(64px + env(safe-area-inset-top, 0px));
+    padding-bottom: 72px;
+    padding-inline: 24px;
+    background:
+      radial-gradient(120% 140% at 12% -10%, #a855f7 0%, transparent 55%),
+      radial-gradient(100% 120% at 100% 0%, #e879f9 0%, transparent 50%),
+      linear-gradient(160deg, #2e1065 0%, #4c1d95 32%, #7c3aed 62%, #a21caf 100%);
+    color: #f6f1fe;
+  }
+ 
+  .hero::before {
+    /* radar / locator sweep — nods to the app's own subject */
+    content: "";
+    position: absolute;
+    right: -120px;
+    top: -140px;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background:
+      repeating-radial-gradient(circle at center,
+        rgba(255,255,255,0.10) 0px,
+        rgba(255,255,255,0.10) 1px,
+        transparent 1px,
+        transparent 54px);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+ 
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.35) 0.6px, transparent 0.6px);
+    background-size: 18px 18px;
+    opacity: 0.12;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+ 
+  .hero-inner {
+    position: relative;
+    max-width: 840px;
+    margin-inline: auto;
+  }
+ 
+  .glyph {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.28);
+    margin-bottom: 28px;
+  }
+ 
+  .glyph svg { width: 26px; height: 26px; }
+ 
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e9d5ff;
+    margin: 0 0 14px;
+  }
+ 
+  h1.title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+    max-width: 14ch;
+  }
+ 
+  .hero-sub {
+    font-size: 1.05rem;
+    color: #ede4fb;
+    max-width: 56ch;
+    margin: 0 0 30px;
+  }
+ 
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+ 
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.24);
+    font-size: 0.82rem;
+    color: #f6f1fe;
+    backdrop-filter: blur(6px);
+  }
+ 
+  .chip b { font-weight: 600; color: #fff; }
+ 
+  /* ---------- Layout ---------- */
+  .wrap {
+    max-width: 1040px;
+    margin-inline: auto;
+    padding-inline: 24px;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 48px;
+    padding-block: 48px 96px;
+  }
+ 
+  @media (max-width: 760px) {
+    .wrap { grid-template-columns: 1fr; }
+  }
+ 
+  nav.toc {
+    position: sticky;
+    top: calc(24px + env(safe-area-inset-top, 0px));
+    align-self: start;
+  }
+ 
+  @media (max-width: 760px) {
+    nav.toc {
+      position: static;
+      order: -1;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+      background: var(--paper-raised);
+    }
+  }
+ 
+  nav.toc .toc-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 12px;
+  }
+ 
+  nav.toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    counter-reset: toc;
+  }
+ 
+  nav.toc a {
+    counter-increment: toc;
+    display: flex;
+    gap: 10px;
+    padding: 7px 8px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    line-height: 1.35;
+  }
+ 
+  nav.toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--accent);
+    flex: none;
+    padding-top: 0.1em;
+  }
+ 
+  nav.toc a:hover { background: var(--accent-tint); color: var(--ink); }
+ 
+  main { min-width: 0; }
+ 
+  section.card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 30px;
+    margin-bottom: 18px;
+    scroll-margin-top: 24px;
+  }
+ 
+  section.card h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: 1.32rem;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    color: var(--ink);
+  }
+ 
+  section.card h2 .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+ 
+  section.card p { margin: 0 0 14px; color: var(--ink-soft); max-width: 66ch; }
+  section.card p:last-child { margin-bottom: 0; }
+ 
+  section.card ul {
+    margin: 0 0 14px;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+ 
+  section.card ul li {
+    color: var(--ink-soft);
+    padding-left: 20px;
+    position: relative;
+    max-width: 62ch;
+  }
+ 
+  section.card ul li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.62em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-glow);
+  }
+ 
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 4px 0 16px;
+  }
+ 
+  .links-grid a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--accent-tint);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+ 
+  .links-grid a span.arrow { color: var(--accent); font-weight: 400; }
+  .links-grid a:hover { border-color: var(--accent-glow); }
+ 
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-tint);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 18px;
+    margin: 4px 0 16px;
+  }
+ 
+  .callout p { color: var(--ink); margin: 0; }
+  .callout a { font-weight: 600; }
+ 
+  footer {
+    max-width: 1040px;
+    margin-inline: auto;
+    padding: 28px 24px calc(40px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    font-size: 0.84rem;
+    color: var(--ink-faint);
+  }
+ 
+  footer a { color: var(--ink-soft); }
+</style>
 </head>
 <body>
-
-<h1>Privacy Policy</h1>
-<div class="date">April 21, 2026</div>
-
-<p>This Privacy Policy applies to the <strong>AI Keyboard: Smart Assistant</strong> mobile application (the "Application"). The Application is provided as an independent service and is intended for use "AS IS".</p>
-
-<h2>1. Purpose of Data Processing</h2>
-<p>If any limited data is processed, it may be used for the following purposes:</p>
-<ul>
-    <li>To respond to inquiries, feedback, or support requests initiated by you.</li>
-    <li>To maintain, improve, and update the Application and its features.</li>
-    <li>To detect, prevent, and resolve technical issues or errors.</li>
-    <li>To generate anonymous usage statistics to improve performance and usability.</li>
-    <li>To enable optional features (such as microphone access for typing or AI assistance), only with your explicit permission.</li>
-</ul>
-
-<p>If you provide information relating to another person, you confirm that you have their consent to do so.</p>
-
-<h2>2. Information We May Process</h2>
-<p>To provide functionality and improve the Application, limited technical data may be processed, including:</p>
-<ul>
-    <li>Usage data such as app interactions, session duration, and features used.</li>
-    <li>Device-related data such as device type, operating system, app version, and crash logs.</li>
-    <li>Network information such as connection type and service provider.</li>
-    <li>Identifiers such as IP address or advertising identifiers (if applicable).</li>
-</ul>
-
-<h2>3. Information We Do NOT Collect</h2>
-<p>Your privacy is a priority. The Application does not collect or store the following:</p>
-<ul>
-    <li>Your name or personal identity details.</li>
-    <li>Your email address (unless you contact us directly).</li>
-    <li>Your phone number.</li>
-    <li>Your passwords or sensitive credentials.</li>
-    <li>Your exact physical address.</li>
-    <li>Payment or banking information (handled securely by Apple or Google if applicable).</li>
-</ul>
-
-<h2>4. Legal Basis for Processing</h2>
-<p>Where applicable, data processing is based on:</p>
-<ul>
-    <li>Your consent (e.g., when granting permissions).</li>
-    <li>Legitimate interest in maintaining and improving the Application.</li>
-    <li>Performance of services requested by you.</li>
-</ul>
-
-<p>You may withdraw your consent at any time by contacting us.</p>
-
-<h2>5. Data Retention</h2>
-<p>Any processed data is retained only for as long as necessary to fulfill its purpose, unless you request deletion or withdraw consent.</p>
-
-<h2>6. Data Sharing</h2>
-<p>The Application does not sell or rent your data. However, limited data may be shared in the following situations:</p>
-<ul>
-    <li>With service providers assisting in app functionality (e.g., analytics or crash reporting).</li>
-    <li>When required by law or legal processes.</li>
-    <li>To protect rights, safety, or prevent fraud or misuse.</li>
-</ul>
-
-<p>Any third-party access is strictly limited and governed by confidentiality obligations.</p>
-
-<h2>7. Your Rights</h2>
-<p>You have the right to:</p>
-<ul>
-    <li>Request access to your data.</li>
-    <li>Request correction of inaccurate data.</li>
-    <li>Request deletion of your data.</li>
-    <li>Withdraw consent at any time.</li>
-</ul>
-
-<p>To exercise your rights, contact us at: <a href="mailto:attiq.ios.developer@gmail.com">attiq.ios.developer@gmail.com</a></p>
-
-<h2>8. Security Measures</h2>
-<p>We take the security of your data seriously and implement appropriate technical and organizational measures to protect it against unauthorized access, alteration, disclosure, or destruction.</p>
-<p>These measures include platform-level protections provided by iOS and Android, secure data handling practices, and restricted access controls where applicable. However, please note that no method of transmission over the internet or electronic storage is completely secure, and absolute security cannot be guaranteed.</p>
-<p>You are also responsible for maintaining the confidentiality of your device and any security features such as passcodes or biometric locks.</p>
-
-<h2>9. Children’s Privacy</h2>
-<p>The Application is not directed to children under the age of 13, and we do not knowingly collect personal data from children.</p>
-<p>If we become aware that a child has provided personal information without parental consent, we will take steps to delete such information promptly.</p>
-<p>If you are a parent or guardian and believe that your child has provided us with information, please contact us so we can take appropriate action.</p>
-
-<h2>10. Changes to This Policy</h2>
-<p>We may update this Privacy Policy from time to time to reflect changes in legal, technical, or business developments.</p>
-<p>When we update the policy, we will revise the "Effective Date" at the top of this page. In some cases, we may provide additional notice within the Application.</p>
-<p>We encourage you to review this Privacy Policy periodically to stay informed about how your information is protected.</p>
-
-<h2>11. Your Consent</h2>
-<p>By downloading, accessing, or using the Application, you acknowledge that you have read and understood this Privacy Policy.</p>
-<p>You agree to the collection and use of information in accordance with this policy. If you do not agree with any part of this Privacy Policy, you should discontinue use of the Application.</p>
-
-<h2>12. Contact Us</h2>
-<p>If you have any questions, concerns, or requests regarding this Privacy Policy or your data, you may contact us at:</p>
-<p><a href="mailto:attiq.ios.developer@gmail.com">attiq.ios.developer@gmail.com</a></p>
-<p>We will make reasonable efforts to respond to your inquiry in a timely manner.</p>
-
+ 
+<div class="hero">
+  <div class="hero-inner">
+    <div class="glyph">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#f6f1fe" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="12" cy="9" r="2.4" fill="#f6f1fe"/>
+      </svg>
+    </div>
+    <p class="eyebrow">Phone Number Locator &amp; Finder</p>
+    <h1 class="title">Privacy Policy</h1>
+    <p class="hero-sub">How this application collects, uses, and safeguards information when you use it &mdash; explained plainly, section by section.</p>
+    <div class="meta-row">
+      <span class="chip">Effective <b class="mono">March 3, 2025</b></span>
+      <span class="chip">Service Provider <b>Aneeqa Naveed</b></span>
+      <span class="chip">Contact <b class="mono">Aneeqanaveed@icloud.com</b></span>
+    </div>
+  </div>
+</div>
+ 
+<div class="wrap">
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc-label">On this page</p>
+    <ol>
+      <li><a href="#collection">Information Collection &amp; Use</a></li>
+      <li><a href="#third-party">Third Party Access</a></li>
+      <li><a href="#opt-out">Opt&#8209;Out Rights</a></li>
+      <li><a href="#retention">Data Retention</a></li>
+      <li><a href="#children">Children</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#consent">Your Consent</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </nav>
+ 
+  <main>
+    <section class="card">
+      <p style="color:var(--ink-soft); margin:0;">This privacy policy applies to the <strong style="color:var(--ink);">Phone Number Locator &amp; Finder</strong> application (the &ldquo;Application&rdquo;) for mobile devices, created by <strong style="color:var(--ink);">Aneeqa Naveed</strong> (the &ldquo;Service Provider&rdquo;) as a free service, provided &ldquo;as is.&rdquo;</p>
+    </section>
+ 
+    <section class="card" id="collection">
+      <h2><span class="num">01</span> Information Collection and Use</h2>
+      <p>The Application collects information when you download and use it. This information may include:</p>
+      <ul>
+        <li>Your device's Internet Protocol address (e.g. IP address)</li>
+        <li>The pages of the Application that you visit, the time and date of your visit, and the time spent on those pages</li>
+        <li>The time spent on the Application</li>
+        <li>The operating system you use on your mobile device</li>
+      </ul>
+      <p>The Application does <strong>not</strong> gather precise information about the location of your mobile device.</p>
+      <p>The Service Provider may use the information you provided to contact you from time to time to provide important information, required notices, and marketing promotions.</p>
+      <p>For a better experience, the Service Provider may require you to provide certain personally identifiable information, including but not limited to <strong>Location</strong> and <strong>Contacts</strong>. Information the Service Provider requests will be retained by them and used as described in this privacy policy.</p>
+    </section>
+ 
+    <section class="card" id="third-party">
+      <h2><span class="num">02</span> Third Party Access</h2>
+      <p>Only aggregated, anonymized data is periodically transmitted to external services to help the Service Provider improve the Application and their service. The Service Provider may share your information with third parties as described in this statement.</p>
+      <p>The Application uses third-party services that have their own privacy policies about handling data:</p>
+      <div class="links-grid">
+        <a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank" rel="noopener">AdMob <span class="arrow">&#8599;</span></a>
+        <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Google Analytics for Firebase <span class="arrow">&#8599;</span></a>
+        <a href="https://firebase.google.com/support/privacy/" target="_blank" rel="noopener">Firebase Crashlytics <span class="arrow">&#8599;</span></a>
+      </div>
+      <p>The Service Provider may disclose User Provided and Automatically Collected Information:</p>
+      <ul>
+        <li>as required by law, such as to comply with a subpoena or similar legal process;</li>
+        <li>when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;</li>
+        <li>with trusted service providers who work on their behalf, have no independent use of the information disclosed to them, and have agreed to adhere to the rules of this privacy statement.</li>
+      </ul>
+    </section>
+ 
+    <section class="card" id="opt-out">
+      <h2><span class="num">03</span> Opt&#8209;Out Rights</h2>
+      <p>You can stop all collection of information by the Application at any time, simply by uninstalling it. You may use the standard uninstall process available on your mobile device or via the applicable app marketplace or network.</p>
+    </section>
+ 
+    <section class="card" id="retention">
+      <h2><span class="num">04</span> Data Retention Policy</h2>
+      <p>The Service Provider will retain User Provided data for as long as you use the Application, and for a reasonable time thereafter.</p>
+      <div class="callout">
+        <p>Want your data deleted? Email <a href="mailto:Aneeqanaveed@icloud.com">Aneeqanaveed@icloud.com</a> and the Service Provider will respond within a reasonable time.</p>
+      </div>
+    </section>
+ 
+    <section class="card" id="children">
+      <h2><span class="num">05</span> Children</h2>
+      <p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13. The Application is not addressed to anyone under 13, and the Service Provider does not knowingly collect personally identifiable information from children under 13.</p>
+      <p>If the Service Provider discovers that a child under 13 has provided personal information, it will be deleted from their servers immediately. If you are a parent or guardian and believe your child has provided personal information, please contact <a href="mailto:Aneeqanaveed@icloud.com">Aneeqanaveed@icloud.com</a> so appropriate action can be taken.</p>
+    </section>
+ 
+    <section class="card" id="security">
+      <h2><span class="num">06</span> Security</h2>
+      <p>The Service Provider is committed to safeguarding the confidentiality of your information, and provides physical, electronic, and procedural safeguards to protect the information it processes and maintains.</p>
+    </section>
+ 
+    <section class="card" id="changes">
+      <h2><span class="num">07</span> Changes</h2>
+      <p>This privacy policy may be updated from time to time, for any reason. The Service Provider will notify you of changes by updating this page. You are advised to consult this page regularly &mdash; continued use of the Application after a change is deemed approval of that change.</p>
+      <p class="mono" style="font-size:0.85rem; color:var(--ink-faint);">This privacy policy is effective as of 2025&#8209;03&#8209;03.</p>
+    </section>
+ 
+    <section class="card" id="consent">
+      <h2><span class="num">08</span> Your Consent</h2>
+      <p>By using the Application, you consent to the processing of your information as set out in this privacy policy, now and as amended.</p>
+    </section>
+ 
+    <section class="card" id="contact">
+      <h2><span class="num">09</span> Contact Us</h2>
+      <p>Questions about privacy while using the Application, or about these practices? Reach the Service Provider directly:</p>
+      <div class="callout">
+        <p>Aneeqa Naveed &middot; <a href="mailto:Aneeqanaveed@icloud.com">Aneeqanaveed@icloud.com</a></p>
+      </div>
+    </section>
+  </main>
+</div>
+ 
+<footer>
+  <span>&copy; 2025&ndash;2026 Phone Number Locator &amp; Finder</span>
+  <span>Effective 2025&#8209;03&#8209;03</span>
+</footer>
+ 
 </body>
 </html>
