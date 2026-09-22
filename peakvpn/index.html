@@ -1,133 +1,482 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #fff;
-            color: #000;
-            line-height: 1.6;
-            padding: 2rem;
-            max-width: 800px;
-            margin: auto;
-        }
-        h1, h2 {
-            color: #111;
-        }
-        h1 {
-            font-size: 2rem;
-        }
-        p, ul {
-            margin-bottom: 1.2rem;
-        }
-        ul {
-            padding-left: 1.2rem;
-        }
-        .date {
-            color: #777;
-            margin-bottom: 2rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VoidVPN Privacy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+ 
+  :root {
+    --bg: #100d0b;
+    --bg-raised: #1b1512;
+    --bg-raised-2: #221a15;
+    --ink: #f6efe7;
+    --ink-soft: #beac9e;
+    --ink-faint: #8a7a6d;
+    --line: #2f251d;
+    --accent: #ff7a33;
+    --accent-2: #ff9c5c;
+    --accent-deep: #c2410c;
+    --accent-tint: #2a1a10;
+    --good: #4fae7a;
+    color-scheme: dark;
+  }
+ 
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+ 
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', system-ui, sans-serif;
+    line-height: 1.65;
+  }
+ 
+  a { color: var(--accent-2); }
+  a:hover { color: var(--accent); }
+ 
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+ 
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(60px + env(safe-area-inset-top, 0px));
+    padding-bottom: 56px;
+    padding-inline: 24px;
+    background:
+      radial-gradient(70% 90% at 85% -10%, rgba(255,122,51,0.22) 0%, transparent 60%),
+      linear-gradient(180deg, #17110d 0%, #100d0b 70%);
+    border-bottom: 1px solid var(--line);
+  }
+ 
+  /* concentric "tunnel" rings receding toward the edge — the VPN's own subject */
+  .hero::before {
+    content: "";
+    position: absolute;
+    right: -180px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 620px;
+    height: 620px;
+    background:
+      repeating-radial-gradient(circle at center,
+        rgba(255,122,51,0.14) 0px,
+        rgba(255,122,51,0.14) 2px,
+        transparent 2px,
+        transparent 40px);
+    -webkit-mask-image: radial-gradient(circle at center, #000 55%, transparent 78%);
+    mask-image: radial-gradient(circle at center, #000 55%, transparent 78%);
+    pointer-events: none;
+  }
+ 
+  .hero-inner { position: relative; max-width: 900px; margin-inline: auto; }
+ 
+  .glyph {
+    width: 50px; height: 50px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(155deg, var(--accent) 0%, var(--accent-deep) 100%);
+    box-shadow: 0 8px 24px -8px rgba(255,122,51,0.55);
+    margin-bottom: 26px;
+  }
+  .glyph svg { width: 24px; height: 24px; }
+ 
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    margin: 0 0 14px;
+  }
+ 
+  h1.title {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 0.96;
+    letter-spacing: 0.005em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+    max-width: 16ch;
+  }
+ 
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0 0 28px;
+  }
+ 
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+ 
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  .chip b { font-weight: 600; color: var(--ink); }
+ 
+  .facts-strip { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fact {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 7px 12px 7px 10px;
+    border-radius: 8px;
+    background: var(--accent-tint);
+    border: 1px solid rgba(255,122,51,0.28);
+    font-size: 0.8rem;
+    color: #ffd9b8;
+  }
+  .fact .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--good); flex: none; }
+ 
+  /* ---------- Layout ---------- */
+  .wrap {
+    max-width: 1080px;
+    margin-inline: auto;
+    padding-inline: 24px;
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 48px;
+    padding-block: 44px 96px;
+  }
+  @media (max-width: 780px) { .wrap { grid-template-columns: 1fr; } }
+ 
+  nav.toc { position: sticky; top: calc(20px + env(safe-area-inset-top, 0px)); align-self: start; }
+  @media (max-width: 780px) {
+    nav.toc {
+      position: static; order: -1;
+      border: 1px solid var(--line); border-radius: 12px;
+      padding: 16px 18px; background: var(--bg-raised);
+    }
+  }
+ 
+  nav.toc .toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 0 0 12px;
+  }
+  nav.toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+  nav.toc a {
+    display: flex; gap: 10px; padding: 6px 8px; border-radius: 7px;
+    font-size: 0.87rem; color: var(--ink-soft); text-decoration: none; line-height: 1.35;
+  }
+  nav.toc a span.tag { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--accent); flex: none; }
+  nav.toc a:hover { background: var(--bg-raised-2); color: var(--ink); }
+ 
+  main { min-width: 0; }
+ 
+  section.card {
+    position: relative;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent-deep);
+    border-radius: 4px 12px 12px 4px;
+    padding: 26px 28px;
+    margin-bottom: 16px;
+    scroll-margin-top: 20px;
+  }
+ 
+  section.card h2 {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: 1.5rem;
+    margin: 0 0 14px;
+    display: flex; align-items: baseline; gap: 12px;
+    color: var(--ink);
+  }
+  section.card h2 .tag { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent); font-weight: 500; text-transform: none; }
+ 
+  section.card h3 { font-size: 0.98rem; font-weight: 600; color: var(--accent-2); margin: 20px 0 8px; }
+ 
+  section.card p { margin: 0 0 14px; color: var(--ink-soft); max-width: 68ch; }
+  section.card p:last-child { margin-bottom: 0; }
+ 
+  section.card ul { margin: 0 0 14px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  section.card ul li { color: var(--ink-soft); padding-left: 20px; position: relative; max-width: 64ch; }
+  section.card ul li::before {
+    content: ""; position: absolute; left: 2px; top: 0.62em;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+  }
+ 
+  ul.no-log li::before { background: var(--good); }
+ 
+  table.rights { width: 100%; border-collapse: collapse; margin: 4px 0 16px; font-size: 0.88rem; }
+  table.rights th, table.rights td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+  table.rights th { color: var(--ink-faint); font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  table.rights td:first-child, table.rights th:first-child { color: var(--ink); padding-left: 0; }
+  .table-scroll { overflow-x: auto; }
+ 
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-tint);
+    border-radius: 0 10px 10px 0;
+    padding: 15px 18px;
+    margin: 4px 0 16px;
+  }
+  .callout p { color: var(--ink); margin: 0; }
+  .callout a { font-weight: 600; }
+ 
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 16px; }
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    color: var(--ink-faint);
+    text-decoration: none;
+  }
+ 
+  footer {
+    max-width: 1080px; margin-inline: auto;
+    padding: 26px 24px calc(40px + env(safe-area-inset-bottom, 0px));
+    display: flex; flex-wrap: wrap; gap: 8px 24px;
+    align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem; color: var(--ink-faint);
+  }
+  footer a { color: var(--ink-soft); }
+</style>
 </head>
 <body>
-
-<h1>Privacy Policy</h1>
-<div class="date">April 21, 2026</div>
-
-<p>This Privacy Policy applies to the <strong>AI Keyboard: Smart Assistant</strong> mobile application (the "Application"). The Application is provided as an independent service and is intended for use "AS IS".</p>
-
-<h2>1. Purpose of Data Processing</h2>
-<p>If any limited data is processed, it may be used for the following purposes:</p>
-<ul>
-    <li>To respond to inquiries, feedback, or support requests initiated by you.</li>
-    <li>To maintain, improve, and update the Application and its features.</li>
-    <li>To detect, prevent, and resolve technical issues or errors.</li>
-    <li>To generate anonymous usage statistics to improve performance and usability.</li>
-    <li>To enable optional features (such as microphone access for typing or AI assistance), only with your explicit permission.</li>
-</ul>
-
-<p>If you provide information relating to another person, you confirm that you have their consent to do so.</p>
-
-<h2>2. Information We May Process</h2>
-<p>To provide functionality and improve the Application, limited technical data may be processed, including:</p>
-<ul>
-    <li>Usage data such as app interactions, session duration, and features used.</li>
-    <li>Device-related data such as device type, operating system, app version, and crash logs.</li>
-    <li>Network information such as connection type and service provider.</li>
-    <li>Identifiers such as IP address or advertising identifiers (if applicable).</li>
-</ul>
-
-<h2>3. Information We Do NOT Collect</h2>
-<p>Your privacy is a priority. The Application does not collect or store the following:</p>
-<ul>
-    <li>Your name or personal identity details.</li>
-    <li>Your email address (unless you contact us directly).</li>
-    <li>Your phone number.</li>
-    <li>Your passwords or sensitive credentials.</li>
-    <li>Your exact physical address.</li>
-    <li>Payment or banking information (handled securely by Apple or Google if applicable).</li>
-</ul>
-
-<h2>4. Legal Basis for Processing</h2>
-<p>Where applicable, data processing is based on:</p>
-<ul>
-    <li>Your consent (e.g., when granting permissions).</li>
-    <li>Legitimate interest in maintaining and improving the Application.</li>
-    <li>Performance of services requested by you.</li>
-</ul>
-
-<p>You may withdraw your consent at any time by contacting us.</p>
-
-<h2>5. Data Retention</h2>
-<p>Any processed data is retained only for as long as necessary to fulfill its purpose, unless you request deletion or withdraw consent.</p>
-
-<h2>6. Data Sharing</h2>
-<p>The Application does not sell or rent your data. However, limited data may be shared in the following situations:</p>
-<ul>
-    <li>With service providers assisting in app functionality (e.g., analytics or crash reporting).</li>
-    <li>When required by law or legal processes.</li>
-    <li>To protect rights, safety, or prevent fraud or misuse.</li>
-</ul>
-
-<p>Any third-party access is strictly limited and governed by confidentiality obligations.</p>
-
-<h2>7. Your Rights</h2>
-<p>You have the right to:</p>
-<ul>
-    <li>Request access to your data.</li>
-    <li>Request correction of inaccurate data.</li>
-    <li>Request deletion of your data.</li>
-    <li>Withdraw consent at any time.</li>
-</ul>
-
-<p>To exercise your rights, contact us at: <a href="mailto:attiq.ios.developer@gmail.com">attiq.ios.developer@gmail.com</a></p>
-
-<h2>8. Security Measures</h2>
-<p>We take the security of your data seriously and implement appropriate technical and organizational measures to protect it against unauthorized access, alteration, disclosure, or destruction.</p>
-<p>These measures include platform-level protections provided by iOS and Android, secure data handling practices, and restricted access controls where applicable. However, please note that no method of transmission over the internet or electronic storage is completely secure, and absolute security cannot be guaranteed.</p>
-<p>You are also responsible for maintaining the confidentiality of your device and any security features such as passcodes or biometric locks.</p>
-
-<h2>9. Children’s Privacy</h2>
-<p>The Application is not directed to children under the age of 13, and we do not knowingly collect personal data from children.</p>
-<p>If we become aware that a child has provided personal information without parental consent, we will take steps to delete such information promptly.</p>
-<p>If you are a parent or guardian and believe that your child has provided us with information, please contact us so we can take appropriate action.</p>
-
-<h2>10. Changes to This Policy</h2>
-<p>We may update this Privacy Policy from time to time to reflect changes in legal, technical, or business developments.</p>
-<p>When we update the policy, we will revise the "Effective Date" at the top of this page. In some cases, we may provide additional notice within the Application.</p>
-<p>We encourage you to review this Privacy Policy periodically to stay informed about how your information is protected.</p>
-
-<h2>11. Your Consent</h2>
-<p>By downloading, accessing, or using the Application, you acknowledge that you have read and understood this Privacy Policy.</p>
-<p>You agree to the collection and use of information in accordance with this policy. If you do not agree with any part of this Privacy Policy, you should discontinue use of the Application.</p>
-
-<h2>12. Contact Us</h2>
-<p>If you have any questions, concerns, or requests regarding this Privacy Policy or your data, you may contact us at:</p>
-<p><a href="mailto:attiq.ios.developer@gmail.com">attiq.ios.developer@gmail.com</a></p>
-<p>We will make reasonable efforts to respond to your inquiry in a timely manner.</p>
-
+ 
+<div class="hero">
+  <div class="hero-inner">
+    <div class="glyph">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="5" y="10.5" width="14" height="10" rx="2" stroke="#100d0b" stroke-width="1.8"/>
+        <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke="#100d0b" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="12" cy="15" r="1.6" fill="#100d0b"/>
+      </svg>
+    </div>
+    <p class="eyebrow">VoidVPN: Fast Secure VPN</p>
+    <h1 class="title">Privacy Policy</h1>
+    <p class="hero-sub">What VoidVPN collects, what it deliberately never logs, and the rights you have over your data &mdash; in full.</p>
+    <div class="meta-row">
+      <span class="chip">Effective <b class="mono">September 20, 2026</b></span>
+      <span class="chip">Contact <b class="mono">Aneeqanaveed@icloud.com</b></span>
+      <span class="chip">Frameworks <b>GDPR &middot; CCPA/CPRA &middot; COPPA</b></span>
+    </div>
+    <div class="facts-strip">
+      <span class="fact"><span class="dot"></span>No browsing history logs</span>
+      <span class="fact"><span class="dot"></span>No DNS query logs</span>
+      <span class="fact"><span class="dot"></span>No traffic content or destination logs</span>
+      <span class="fact"><span class="dot"></span>AES-256 encrypted tunnel</span>
+    </div>
+  </div>
+</div>
+ 
+<div class="wrap">
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc-label">On this page</p>
+    <ol>
+      <li><a href="#scope"><span class="tag">00</span> Scope &amp; Who We Are</a></li>
+      <li><a href="#collect"><span class="tag">01</span> Information We Collect</a></li>
+      <li><a href="#no-log"><span class="tag">02</span> What We Never Log</a></li>
+      <li><a href="#use"><span class="tag">03</span> How We Use It</a></li>
+      <li><a href="#legal-basis"><span class="tag">04</span> Legal Basis (GDPR)</a></li>
+      <li><a href="#third-party"><span class="tag">05</span> Third Parties &amp; Sub-processors</a></li>
+      <li><a href="#network"><span class="tag">06</span> The VPN Tunnel &amp; Kill Switch</a></li>
+      <li><a href="#sharing"><span class="tag">07</span> Sharing &amp; Disclosure</a></li>
+      <li><a href="#transfers"><span class="tag">08</span> International Transfers</a></li>
+      <li><a href="#retention"><span class="tag">09</span> Data Retention</a></li>
+      <li><a href="#rights"><span class="tag">10</span> Your Privacy Rights</a></li>
+      <li><a href="#security"><span class="tag">11</span> Security</a></li>
+      <li><a href="#children"><span class="tag">12</span> Children's Privacy</a></li>
+      <li><a href="#cookies"><span class="tag">13</span> Cookies &amp; Tracking</a></li>
+      <li><a href="#changes"><span class="tag">14</span> Changes</a></li>
+      <li><a href="#contact"><span class="tag">15</span> Contact Us</a></li>
+    </ol>
+  </nav>
+ 
+  <main>
+    <section class="card" id="scope">
+      <h2><span class="tag">00</span> Scope &amp; Who We Are</h2>
+      <p>This Privacy Policy explains how <strong style="color:var(--ink);">VoidVPN: Fast Secure VPN</strong> (the &ldquo;Application,&rdquo; &ldquo;VoidVPN,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;) collects, uses, discloses, and protects information in connection with your use of the Application on mobile and desktop devices. It applies to everyone who downloads, installs, or uses VoidVPN, wherever they are located.</p>
+      <p>The developer and data controller responsible for VoidVPN is <strong style="color:var(--ink);">Aneeqa Naveed</strong>. Questions, requests, or complaints about this policy can be sent to <a href="mailto:Aneeqanaveed@icloud.com">Aneeqanaveed@icloud.com</a>.</p>
+      <p>By downloading, installing, or using VoidVPN, you agree to the collection and use of information as described in this policy. If you do not agree, please do not use the Application.</p>
+    </section>
+ 
+    <section class="card" id="collect">
+      <h2><span class="tag">01</span> Information We Collect</h2>
+      <p>As a VPN service, VoidVPN is built to minimize what it collects. We only collect what is necessary to provide the service, keep it secure, bill for subscriptions, and fix problems.</p>
+ 
+      <h3>Account &amp; subscription information</h3>
+      <ul>
+        <li>Email address, if you create an account or contact support &mdash; used for login, receipts, and responding to you.</li>
+        <li>Subscription status and purchase history (e.g. plan tier, renewal date). Payment card and billing details are collected and processed directly by <strong>Apple's App Store</strong> or <strong>Google Play Billing</strong>; VoidVPN does not receive or store your full payment card number.</li>
+      </ul>
+ 
+      <h3>Device &amp; diagnostic information</h3>
+      <ul>
+        <li>Device model, operating system and version, app version, and language/region settings &mdash; used to keep the app compatible and to prioritize bug fixes.</li>
+        <li>Crash logs and performance diagnostics (e.g. a crash stack trace, memory warnings) &mdash; used only to identify and fix defects.</li>
+        <li>Aggregate, non-identifying network performance metrics (such as overall server load or general latency bands) used to choose which server locations to expand or maintain. These metrics are not tied to your individual browsing activity.</li>
+      </ul>
+ 
+      <h3>Support communications</h3>
+      <ul>
+        <li>Anything you send us directly &mdash; emails, screenshots, or descriptions of an issue &mdash; retained only as long as needed to resolve your request.</li>
+      </ul>
+    </section>
+ 
+    <section class="card" id="no-log">
+      <h2><span class="tag">02</span> What We Never Log</h2>
+      <p>VoidVPN operates a strict no-activity-logs policy. Regardless of what plan you're on or which server you connect to, we do not record:</p>
+      <ul class="no-log">
+        <li>The websites, apps, or services you visit or use while connected</li>
+        <li>Your DNS queries</li>
+        <li>The content of your traffic, or its destination IP addresses</li>
+        <li>Your originating (real) IP address once a session log is closed</li>
+        <li>Connection timestamps or session duration tied to your individual browsing activity</li>
+      </ul>
+      <p>Some ephemeral, in-memory connection data (such as which server you're currently routed through) exists only for as long as needed to maintain your active session, and is not written to persistent logs or storage.</p>
+    </section>
+ 
+    <section class="card" id="use">
+      <h2><span class="tag">03</span> How We Use Information</h2>
+      <p>We use the limited information described above to:</p>
+      <ul>
+        <li>Provide, operate, and maintain the VPN connection and related features (kill switch, server selection, split tunneling if offered);</li>
+        <li>Process subscriptions and verify entitlement to paid features via the App Store or Google Play;</li>
+        <li>Diagnose, fix, and prevent technical issues and abuse of the service;</li>
+        <li>Respond to support requests you send us;</li>
+        <li>Comply with legal obligations; and</li>
+        <li>Communicate important service notices (e.g. renewal reminders, security notices). We do not use your data for third-party advertising.</li>
+      </ul>
+    </section>
+ 
+    <section class="card" id="legal-basis">
+      <h2><span class="tag">04</span> Legal Basis for Processing (GDPR)</h2>
+      <p>If you are in the European Economic Area (EEA), United Kingdom, or Switzerland, we process personal data under the following legal bases from the General Data Protection Regulation (GDPR):</p>
+      <div class="table-scroll">
+        <table class="rights">
+          <thead><tr><th>Processing activity</th><th>Legal basis</th></tr></thead>
+          <tbody>
+            <tr><td>Providing the VPN connection you request</td><td>Performance of a contract</td></tr>
+            <tr><td>Billing and subscription management</td><td>Performance of a contract</td></tr>
+            <tr><td>Crash diagnostics and security monitoring</td><td>Legitimate interest</td></tr>
+            <tr><td>Responding to support requests</td><td>Legitimate interest / consent</td></tr>
+            <tr><td>Legal compliance (e.g. valid court order)</td><td>Legal obligation</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+ 
+    <section class="card" id="third-party">
+      <h2><span class="tag">05</span> Third Parties &amp; Sub-processors</h2>
+      <p>We rely on a small number of service providers to run VoidVPN. Each only receives the minimum data necessary for its function, and none receive your browsing activity:</p>
+      <div class="table-scroll">
+        <table class="rights">
+          <thead><tr><th>Provider</th><th>Purpose</th><th>Data involved</th></tr></thead>
+          <tbody>
+            <tr><td>Apple App Store / Google Play Billing</td><td>Payment processing &amp; subscription management</td><td>Purchase status, receipt tokens</td></tr>
+            <tr><td>Firebase Crashlytics</td><td>Crash &amp; stability reporting</td><td>Crash logs, device model, app version</td></tr>
+            <tr><td>Cloud infrastructure &amp; VPN server hosts</td><td>Operating the VPN network</td><td>Ephemeral connection routing only</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Each of these providers has its own privacy policy governing how it handles the limited data it receives:</p>
+      <div class="badge-row">
+        <a class="badge" href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy &#8599;</a>
+        <a class="badge" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy &#8599;</a>
+        <a class="badge" href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy &#8599;</a>
+      </div>
+      <p>We do not sell personal information to third parties, and we do not share your data with advertisers or data brokers.</p>
+    </section>
+ 
+    <section class="card" id="network">
+      <h2><span class="tag">06</span> The VPN Tunnel &amp; Kill Switch</h2>
+      <p>When connected, VoidVPN routes your device's internet traffic through an encrypted tunnel to one of our VPN servers, which then forwards it to its destination on your behalf. This masks your real IP address from the sites and services you visit, and encrypts your traffic from your device to our server so that it cannot be read by your network operator or others on the same network.</p>
+      <p>If the app offers a <strong>kill switch</strong>, enabling it blocks all internet traffic on your device if the encrypted tunnel unexpectedly drops, so that traffic never falls back to your unprotected connection without your knowledge. Server locations are chosen for performance and legal operating environment; connecting through a given location does not create a persistent record of your activity there.</p>
+    </section>
+ 
+    <section class="card" id="sharing">
+      <h2><span class="tag">07</span> Sharing &amp; Disclosure</h2>
+      <p>Because VoidVPN does not log your browsing activity, there is generally no activity data to share, even in response to a legal request. We may disclose the limited account and diagnostic information described in Section 01:</p>
+      <ul>
+        <li>When required by valid legal process (such as a subpoena or court order) that we are legally obligated to honor;</li>
+        <li>To protect the rights, property, or safety of VoidVPN, our users, or the public, including investigating fraud or abuse of the service;</li>
+        <li>In connection with a merger, acquisition, or sale of assets, subject to this policy continuing to govern any transferred data; or</li>
+        <li>With your consent.</li>
+      </ul>
+      <p>Where legally permitted, we notify affected users of a legal request for their data before complying with it.</p>
+    </section>
+ 
+    <section class="card" id="transfers">
+      <h2><span class="tag">08</span> International Data Transfers</h2>
+      <p>VoidVPN's infrastructure and service providers may be located in countries other than your own, including the United States. Where we transfer personal data out of the EEA, UK, or Switzerland, we rely on appropriate safeguards recognized under GDPR, such as Standard Contractual Clauses, to ensure your data continues to receive an equivalent level of protection.</p>
+    </section>
+ 
+    <section class="card" id="retention">
+      <h2><span class="tag">09</span> Data Retention</h2>
+      <ul>
+        <li><strong style="color:var(--ink);">Account &amp; billing data:</strong> retained for as long as your account or subscription is active, and for a limited period afterward to comply with tax and accounting obligations.</li>
+        <li><strong style="color:var(--ink);">Crash &amp; diagnostic logs:</strong> retained only as long as needed to investigate and resolve the underlying issue, typically no more than 90 days.</li>
+        <li><strong style="color:var(--ink);">Support correspondence:</strong> retained only as long as needed to resolve your request and for a reasonable period after, in case you follow up.</li>
+        <li><strong style="color:var(--ink);">Connection/activity logs:</strong> not retained &mdash; see Section 02.</li>
+      </ul>
+      <div class="callout">
+        <p>To request deletion of your account or any data we hold about you, email <a href="mailto:Aneeqanaveed@icloud.com">Aneeqanaveed@icloud.com</a>. We'll confirm the request and act on it within a reasonable time.</p>
+      </div>
+    </section>
+ 
+    <section class="card" id="rights">
+      <h2><span class="tag">10</span> Your Privacy Rights</h2>
+ 
+      <h3>If you're in the EEA, UK, or Switzerland (GDPR)</h3>
+      <p>You have the right to access, correct, delete, restrict, or port the personal data we hold about you, and to object to certain processing based on legitimate interest. You also have the right to lodge a complaint with your local data protection supervisory authority.</p>
+ 
+      <h3>If you're a California resident (CCPA/CPRA)</h3>
+      <p>You have the right to know what personal information we collect, request its deletion, correct inaccurate information, and opt out of the "sale" or "sharing" of personal information. <strong style="color:var(--ink);">We do not sell or share your personal information</strong> as those terms are defined under the CCPA/CPRA, so no opt-out action is required for that. You will not receive discriminatory treatment for exercising any of these rights.</p>
+ 
+      <h3>Exercising your rights</h3>
+      <p>To exercise any of the rights above, email <a href="mailto:Aneeqanaveed@icloud.com">Aneeqanaveed@icloud.com</a> from the address associated with your account where possible. We may need to verify your identity before acting on a request, and will respond within the timeframe required by applicable law.</p>
+    </section>
+ 
+    <section class="card" id="security">
+      <h2><span class="tag">11</span> Security</h2>
+      <p>VoidVPN uses industry-standard AES-256 encryption to secure your connection between your device and our VPN servers. We apply technical and organizational safeguards &mdash; including encryption in transit, access controls limiting who can reach account and diagnostic data, and regular review of our infrastructure &mdash; to protect the information we do hold. No method of transmission or storage is 100% secure, but we work to keep the amount of data at risk as small as possible by not collecting what we don't need in the first place.</p>
+    </section>
+ 
+    <section class="card" id="children">
+      <h2><span class="tag">12</span> Children's Privacy</h2>
+      <p>VoidVPN is not directed to children under 13 (or the equivalent minimum age in your jurisdiction), and we do not knowingly collect personal information from children under that age, consistent with the U.S. Children's Online Privacy Protection Act (COPPA) and similar laws elsewhere. If we learn that we have inadvertently collected personal information from a child under the applicable age, we will delete it promptly. If you believe a child has provided us with personal information, contact <a href="mailto:Aneeqanaveed@icloud.com">Aneeqanaveed@icloud.com</a>.</p>
+    </section>
+ 
+    <section class="card" id="cookies">
+      <h2><span class="tag">13</span> Cookies &amp; Similar Technologies</h2>
+      <p>The VoidVPN mobile application itself does not use advertising cookies or third-party tracking SDKs. If we operate a companion website (for billing, support, or marketing), that website may use minimal, functional cookies necessary for it to work, and any analytics cookies used there will be disclosed and, where required by law, subject to your consent via a cookie banner.</p>
+    </section>
+ 
+    <section class="card" id="changes">
+      <h2><span class="tag">14</span> Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for legal, operational, or regulatory reasons. We will post the revised policy here and update the effective date above. For material changes, we will provide additional notice (such as an in-app notification) where required by law. Continued use of VoidVPN after a change takes effect constitutes acceptance of the revised policy.</p>
+    </section>
+ 
+    <section class="card" id="contact">
+      <h2><span class="tag">15</span> Contact Us</h2>
+      <p>Questions, requests, or complaints about this Privacy Policy or how VoidVPN handles your data can be sent directly to:</p>
+      <div class="callout">
+        <p>Aneeqa Naveed &middot; <a href="mailto:Aneeqanaveed@icloud.com">Aneeqanaveed@icloud.com</a></p>
+      </div>
+    </section>
+  </main>
+</div>
+ 
+<footer>
+  <span>&copy; 2026 VoidVPN: Fast Secure VPN</span>
+  <span>Effective September 20, 2026</span>
+</footer>
+ 
 </body>
 </html>
